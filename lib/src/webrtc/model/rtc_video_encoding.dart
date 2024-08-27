@@ -9,10 +9,13 @@ class RtcVideoEncoding
   const RtcVideoEncoding({
     required this.maxFramerate,
     required this.maxBitrate,
+    this.scaleResolutionDownBy,
   });
 
   final int maxFramerate;
   final int maxBitrate;
+  final int? scaleResolutionDownBy;
+
 
   RtcVideoEncoding copyWith({
     int? maxFramerate,

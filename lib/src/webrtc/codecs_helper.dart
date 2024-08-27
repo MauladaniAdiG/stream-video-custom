@@ -72,7 +72,7 @@ List<rtc.RTCRtpEncoding> encodingsFromPresets(
   final result = <rtc.RTCRtpEncoding>[];
 
   presets.forEach((rid, preset) {
-    final double scaleResolutionDownBy =
+    final scaleResolutionDownBy = preset.encoding.scaleResolutionDownBy?.toDouble() ??
         math.max(1, dimension.min() / preset.dimension.min());
     streamLog.v(
       'SV:RtcManager',

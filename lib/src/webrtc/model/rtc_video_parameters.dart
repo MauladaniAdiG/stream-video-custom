@@ -80,6 +80,7 @@ extension RtcVideoParametersPresets on RtcVideoParameters {
     encoding: RtcVideoEncoding(
       maxBitrate: 6000000,
       maxFramerate: 60,
+      scaleResolutionDownBy: 1
     ),
   );
 
@@ -87,15 +88,17 @@ extension RtcVideoParametersPresets on RtcVideoParameters {
     dimension: RtcVideoDimensionPresets.h720_169,
     encoding: RtcVideoEncoding(
       maxBitrate: 3000000,
-      maxFramerate: 30,
+      maxFramerate: 60,
+      scaleResolutionDownBy: 2
     ),
   );
 
   static const h720_16x960fpsLow = RtcVideoParameters(
     dimension: RtcVideoDimensionPresets.h720_169,
     encoding: RtcVideoEncoding(
-      maxBitrate: 1000000,
-      maxFramerate: 15,
+      maxBitrate: 1500000,
+      maxFramerate: 30,
+      scaleResolutionDownBy: 4
     ),
   );
 
