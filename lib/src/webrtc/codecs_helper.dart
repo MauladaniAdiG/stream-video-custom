@@ -8,17 +8,11 @@ import 'model/rtc_video_parameters.dart';
 
 // 16:9 default
 const _defaultSimulcast_16x9 = {
-  'f': RtcVideoParametersPresets.h720_16x960fpsLow,
+  'f': RtcVideoParametersPresets.h720_16x960fpsHigh,
   'h': RtcVideoParametersPresets.h720_16x960fpsMedium,
-  'q': RtcVideoParametersPresets.h720_16x960fpsHigh,
+  'q': RtcVideoParametersPresets.h720_16x960fpsLow,
 };
 
-// 4:3 default
-const _defaultSimulcast_4x3 = {
-  'f': RtcVideoParametersPresets.h720_4x3,
-  'h': RtcVideoParametersPresets.h360_4x3,
-  'q': RtcVideoParametersPresets.h180_4x3,
-};
 
 List<rtc.RTCRtpEncoding> computeVideoEncodings({
   required RtcVideoDimension dimension,
@@ -51,18 +45,7 @@ Map<String, RtcVideoParameters> _presetsForDimension({
     'SV:RtcManager',
     () => '[publishVideoTrack] aspectRatio: $aspectRatio',
   );
-  if (_is16x9ratio(aspectRatio)) {
-    streamLog.v(
-      'SV:RtcManager',
-      () => '[publishVideoTrack] defaultSimulcast_16x9',
-    );
-    return _defaultSimulcast_16x9;
-  }
-  streamLog.v(
-    'SV:RtcManager',
-    () => '[publishVideoTrack] defaultSimulcast_4x3',
-  );
-  return _defaultSimulcast_4x3;
+  return _defaultSimulcast_16x9;
 }
 
 List<rtc.RTCRtpEncoding> encodingsFromPresets(
@@ -89,9 +72,4 @@ List<rtc.RTCRtpEncoding> encodingsFromPresets(
     );
   });
   return result;
-}
-
-bool _is16x9ratio(double aspectRatio) {
-  return (aspectRatio - RtcVideoDimensionHelpers.aspect_16x9).abs() <
-      (aspectRatio - RtcVideoDimensionHelpers.aspect_4x3).abs();
 }
