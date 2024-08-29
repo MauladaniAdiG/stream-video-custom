@@ -115,7 +115,7 @@ List<SdpRuleToggle> _createRules() {
       rule: const SdpMungingRule.prioritizeCodec(
         platforms: [PlatformType.android],
         types: [SdpType.localOffer],
-        codec: VideoCodec.vp8,
+        codec: VideoCodec.h264,
       ),
     ),
     SdpRuleToggle(
